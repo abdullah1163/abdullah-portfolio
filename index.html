@@ -1,0 +1,1015 @@
+<title>Abdullah Nazir Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a one page pitch. Sticky bar with one CTA, promise, problems, proof, process, FAQ, then a brief builder that writes the first message. Black with gold as the only accent. */
+:root {
+  --bg: #0a0a0a;
+  --surface: #131313;
+  --raised: #1c1c1c;
+  --line: #2a2a2a;
+  --text: #f3f2ee;
+  --muted: #a8a59d;
+  --gold: #fdbe2c;
+  --gold-dim: #3a2e0f;
+  --head: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { background: var(--bg); color: var(--text); font: 16px/1.6 var(--body); }
+body.locked { overflow: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.in { max-width: 1120px; margin: 0 auto; }
+h1, h2, h3, h4 { font-family: var(--head); margin: 0; text-wrap: balance; letter-spacing: -.015em; }
+p { margin: 0; }
+a { color: var(--gold); }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; touch-action: manipulation; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+.muted { color: var(--muted); }
+.label { font: 600 12.5px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.kicker { font: 600 13px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 10px; font: 600 15.5px/1 var(--body); text-decoration: none; background: var(--gold); color: #141000; transition: transform .15s ease-out, background .15s, box-shadow .15s; white-space: nowrap; }
+.btn:hover { background: #ffcf5c; }
+.btn:active { transform: scale(.97); }
+.btn.line { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1px #3a3833; }
+.btn.line:hover { box-shadow: inset 0 0 0 1px var(--gold); color: var(--gold); }
+.btn.sm { min-height: 40px; padding: 0 16px; font-size: 14.5px; }
+.link-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; color: var(--gold); font-weight: 600; font-size: 15px; text-decoration: none; }
+.link-btn:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: rgba(10, 10, 10, .96); border-bottom: 1px solid var(--line); }
+.bar .in { display: flex; align-items: center; gap: 18px; min-height: 64px; }
+.brand { font: 800 18px/1 var(--head); color: var(--text); text-decoration: none; white-space: nowrap; }
+.brand span { color: var(--gold); }
+.bar nav { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+.bar nav::-webkit-scrollbar { display: none; }
+.bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 8px; color: var(--muted); font-weight: 500; font-size: 15px; text-decoration: none; white-space: nowrap; }
+.bar nav a:hover { color: var(--text); background: var(--raised); }
+.bar nav a.on { color: var(--gold); }
+
+/* Hero */
+.hero { padding-block: 64px 40px; }
+.hero .in { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(36px, 5.2vw, 60px); font-weight: 800; line-height: 1.04; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lede { font-size: clamp(17px, 1.8vw, 19px); color: var(--muted); margin-top: 18px; max-width: 34em; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero .note { font-size: 14px; color: var(--muted); margin-top: 14px; }
+.card-id { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 24px; display: grid; gap: 18px; }
+.card-id .who { display: flex; gap: 14px; align-items: center; }
+.mono { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #141000; display: grid; place-items: center; font: 800 20px/1 var(--head); flex: 0 0 auto; }
+.card-id h2 { font-size: 20px; }
+.card-id .role { font-size: 14.5px; color: var(--muted); }
+.facts { display: grid; gap: 0; }
+.facts div { display: flex; justify-content: space-between; gap: 12px; padding-block: 10px; border-top: 1px solid var(--line); font-size: 14.5px; }
+.facts div span:first-child { color: var(--muted); }
+.facts div span:last-child { font-weight: 600; text-align: right; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px var(--gold-dim); }
+
+/* Proof strip */
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.kpi { padding: 20px 18px; display: grid; gap: 6px; align-content: start; background: var(--surface); }
+.kpi + .kpi { border-left: 1px solid var(--line); }
+.kpi .v { font: 800 clamp(28px, 3.2vw, 40px)/1 var(--head); color: var(--gold); font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 14px; line-height: 1.4; color: var(--muted); }
+
+section.block { padding-block: 72px; }
+section.block + section.block { border-top: 1px solid var(--line); }
+.head { display: grid; gap: 10px; max-width: 48em; margin-bottom: 32px; }
+.head h2 { font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; }
+.head p { color: var(--muted); font-size: 17px; }
+
+/* Problems */
+.probs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.prob { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.prob .pain { font: 600 13.5px/1.4 var(--body); color: var(--muted); }
+.prob h3 { font-size: 19px; line-height: 1.3; }
+.prob p { color: var(--muted); font-size: 15px; }
+.prob .proof { font-size: 14px; color: var(--text); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 4px; }
+.prob .proof b { color: var(--gold); font-weight: 600; }
+
+/* Work */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.chip { min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); font-size: 14px; font-weight: 500; transition: border-color .15s, background .15s, color .15s; }
+.chip:hover { border-color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--gold); color: #141000; border-color: var(--gold); }
+.chip[aria-pressed="true"] .muted { color: #5a4708; }
+.works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.work { text-align: left; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 22px; display: grid; gap: 12px; align-content: start; transition: border-color .15s, transform .15s ease-out; }
+.work:hover { border-color: var(--gold); }
+.work:active { transform: scale(.99); }
+.work .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge { font: 600 12px/1 var(--body); padding: 6px 9px; border-radius: 999px; background: var(--raised); color: var(--muted); }
+.badge.gold { background: var(--gold-dim); color: var(--gold); }
+.work h3 { font-size: 18px; line-height: 1.3; }
+.work .stat { display: flex; align-items: baseline; gap: 8px; }
+.work .stat b { font: 800 26px/1 var(--head); color: var(--gold); font-variant-numeric: tabular-nums; }
+.work .stat span { font-size: 14px; color: var(--muted); }
+.work .out { font-size: 14.5px; color: var(--muted); }
+.work .open { font-size: 14.5px; font-weight: 600; color: var(--gold); margin-top: 4px; }
+.more-row { display: flex; justify-content: center; margin-top: 24px; }
+
+/* Services */
+.svc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.svc article { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 22px; display: grid; gap: 12px; align-content: start; }
+.svc h3 { font-size: 19px; }
+.svc p { color: var(--muted); font-size: 15px; }
+.svc ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14.5px; }
+.svc .go { justify-self: start; }
+
+/* Platforms */
+.plat-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.pg { display: grid; gap: 10px; align-content: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.pchip { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 13.5px; font-weight: 500; }
+.pchip:hover { border-color: var(--gold); }
+.pchip[aria-pressed="true"] { background: var(--gold); color: #141000; border-color: var(--gold); }
+.usage { margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 10px; background: var(--surface); }
+.usage .links { display: flex; flex-wrap: wrap; gap: 8px; }
+.usage .links button { min-height: 40px; padding: 0 14px; border-radius: 8px; background: var(--raised); font-size: 14px; text-align: left; }
+.usage .links button:hover { color: var(--gold); }
+
+/* Process + leadership */
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font: 600 14px/1 var(--head); }
+.steps b { display: block; font-family: var(--head); font-weight: 600; font-size: 17px; }
+.steps span { color: var(--muted); font-size: 15px; }
+.lead-card { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 24px; display: grid; gap: 16px; align-content: start; }
+.lead-card h3 { font-size: 21px; }
+.lead-card p { color: var(--muted); }
+.lstats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.lstats div { border-top: 2px solid var(--gold); padding-top: 10px; display: grid; gap: 2px; }
+.lstats b { font: 800 26px/1 var(--head); }
+.lstats span { font-size: 13.5px; color: var(--muted); }
+.lead-card ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15px; }
+.jobs { display: grid; gap: 0; margin-top: 8px; }
+.jobs div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; padding-block: 12px; border-top: 1px solid var(--line); font-size: 14.5px; }
+.jobs div span:first-child { color: var(--muted); }
+
+/* Apps */
+.prods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.prod { border: 1px solid var(--line); border-radius: 14px; padding: 22px; background: var(--surface); display: grid; gap: 10px; align-content: start; }
+.prod .kind { font: 600 12px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--gold); }
+.prod h3 { font-size: 19px; }
+.prod p { color: var(--muted); font-size: 15px; }
+
+/* FAQ */
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.faq summary { list-style: none; cursor: pointer; min-height: 56px; padding: 16px 52px 16px 20px; position: relative; font: 600 17px/1.4 var(--head); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--gold); font-size: 16px; transition: transform .2s; }
+.faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq details p { padding: 0 20px 18px; color: var(--muted); }
+
+/* Contact */
+.contact { background: var(--surface); border-top: 1px solid var(--line); }
+.contact .in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; padding-block: 72px; }
+.contact h2 { font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; }
+.contact .lead { color: var(--muted); margin-top: 12px; font-size: 17px; }
+.reach { display: grid; gap: 12px; margin-top: 28px; }
+.reach .row { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding-block: 12px; border-top: 1px solid var(--line); }
+.reach .val { font: 600 17px/1.3 var(--head); overflow-wrap: anywhere; user-select: all; }
+.reach .acts { display: flex; gap: 8px; }
+.mini { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 8px; background: var(--raised); color: var(--text); font-size: 14px; font-weight: 600; text-decoration: none; }
+.mini:hover { color: var(--gold); }
+.brief { scroll-margin-top: 80px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg); padding: 24px; display: grid; gap: 16px; }
+.brief h3 { font-size: 20px; }
+.brief .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.brief label { font-weight: 600; font-size: 14.5px; }
+.brief textarea, .brief input { width: 100%; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font: 15.5px/1.5 var(--body); padding: 12px 14px; }
+.brief textarea { min-height: 110px; resize: vertical; }
+.brief textarea:focus, .brief input:focus { border-color: var(--gold); outline: none; }
+.brief .row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.brief .field { display: grid; gap: 6px; }
+.brief .sendrow { display: flex; flex-wrap: wrap; gap: 10px; }
+.brief .msg { font-size: 14px; color: var(--muted); min-height: 1.5em; }
+.fine { font-size: 13px; color: var(--muted); padding-block: 22px; }
+
+/* Case viewer */
+.viewer { position: fixed; inset: 0; z-index: 80; background: rgba(0, 0, 0, .72); display: grid; place-items: start center; overflow-y: auto; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.sheet { width: min(1040px, 100%); margin-block: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; display: grid; }
+.sheet-top { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--line); border-radius: 16px 16px 0 0; }
+.sheet-top .count { font-size: 14px; color: var(--muted); margin-right: auto; }
+.icon-btn { min-width: 44px; min-height: 44px; border-radius: 10px; background: var(--raised); display: inline-grid; place-items: center; font-size: 15px; font-weight: 600; padding: 0 12px; }
+.icon-btn:hover { color: var(--gold); }
+.sheet-body { padding: 28px; display: grid; gap: 22px; }
+.sheet-body h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; line-height: 1.15; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.nums { display: flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
+.nums div { flex: 1 1 130px; padding: 14px 16px; border-right: 1px solid var(--line); display: grid; gap: 2px; }
+.nums div:last-child { border-right: 0; }
+.nums b { font: 800 22px/1.1 var(--head); color: var(--gold); font-variant-numeric: tabular-nums; }
+.nums span { font-size: 13px; color: var(--muted); }
+.nsr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.nsr > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.nsr h4 { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.nsr p, .nsr li { font-size: 15px; }
+.nsr ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.stack-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.sheet-cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding: 20px 28px; background: var(--bg); border-radius: 0 0 16px 16px; }
+.sheet-cta p { font: 600 17px/1.4 var(--head); }
+
+/* Diagrams */
+.dia { margin: 0; display: grid; gap: 8px; }
+.dia-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #0e0e0e; }
+.dia svg { display: block; width: 100%; min-width: 620px; height: auto; font-family: var(--body); }
+.dia figcaption { font-size: 13px; color: var(--muted); }
+.dia .hd { font-size: 11.5px; font-weight: 600; letter-spacing: .12em; fill: var(--muted); }
+.dia .nd rect { fill: var(--raised); stroke: #34322d; stroke-width: 1; }
+.dia .nd.warn rect { fill: #2a1411; stroke: #8c3a2b; }
+.dia .nd.warn .t { fill: #f2a28f; }
+.dia .t { font-size: 14px; font-weight: 600; fill: var(--text); font-family: var(--head); }
+.dia .s { font-size: 12px; fill: var(--muted); }
+.dia .hub rect { fill: var(--gold-dim); stroke: var(--gold); stroke-width: 1.5; }
+.dia .hub .t { fill: var(--gold); font-size: 15.5px; }
+.dia .hub .s { fill: #e8dcc0; }
+.dia .e { fill: none; stroke: #5d5a52; stroke-width: 1.5; }
+.dia .ah { fill: #5d5a52; }
+.dia .lb { font-size: 11.5px; font-style: italic; fill: var(--muted); }
+.dia .lp { fill: none; stroke: var(--gold); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.dia .ahg { fill: var(--gold); }
+.dia .lbg { font-size: 12px; font-style: italic; fill: var(--gold); }
+.dia .eb { fill: #121212; stroke: var(--line); }
+.dia .ei { font-size: 13px; fill: #d6d3cb; }
+
+
+
+@media (max-width: 980px) {
+  .hero .in, .two, .contact .in { grid-template-columns: minmax(0, 1fr); }
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .kpi:nth-child(4) { border-left: 0; }
+  .kpi:nth-child(n+4) { border-top: 1px solid var(--line); }
+  .probs, .works, .svc, .prods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plat-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nsr { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .bar nav { display: none; }
+  .bar .btn { margin-left: auto; }
+}
+@media (max-width: 640px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi:nth-child(n) { border-left: 0; border-top: 1px solid var(--line); }
+  .kpi:nth-child(2n) { border-left: 1px solid var(--line); }
+  .kpi:nth-child(-n+2) { border-top: 0; }
+  .probs, .works, .svc, .prods, .plat-groups, .brief .row2 { grid-template-columns: minmax(0, 1fr); }
+  .lstats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .reach .row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .jobs div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  section.block { padding-block: 52px; }
+  .hero { padding-block: 40px 28px; }
+  .sheet-body { padding: 20px; }
+  .sheet-cta { padding: 18px 20px; }
+  .viewer { padding: 0; }
+  .sheet { margin-block: 0; border-radius: 0; min-height: 100%; }
+  .sheet-top { border-radius: 0; }
+  .brand .full { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+
+<header class="bar band">
+  <div class="in">
+    <a class="brand" href="#top">Abdullah <span>Nazir</span></a>
+    <nav aria-label="Sections" id="navlinks">
+      <a href="#problems" data-sec="problems">What I fix</a>
+      <a href="#work" data-sec="work">Results</a>
+      <a href="#services" data-sec="services">Services</a>
+      <a href="#process" data-sec="process">How I work</a>
+      <a href="#faq" data-sec="faq">FAQ</a>
+    </nav>
+    <a class="btn sm" href="#contact">Start a project</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero band">
+  <div class="in">
+    <div>
+      <p class="kicker">GoHighLevel · Voice AI · CRM integrations</p>
+      <h1>GoHighLevel systems that turn leads into <em>booked calls</em>, without the busywork.</h1>
+      <p class="lede">I build AI voice agents, clean CRM migrations and custom integrations for agencies and service businesses. Over 6 years in GoHighLevel and 147 client implementations led as a Fulfillment Team Lead.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Tell me about your project</a>
+        <a class="btn line" href="#work">See client results</a>
+      </div>
+      <p class="note">Project based or ongoing. Every engagement starts with a short audit of your account.</p>
+    </div>
+    <aside class="card-id" aria-label="Profile summary">
+      <div class="who">
+        <div class="mono" aria-hidden="true">AN</div>
+        <div><h2>Abdullah Nazir</h2><p class="role">Fulfillment Team Lead · GoHighLevel and Voice AI Engineer</p></div>
+      </div>
+      <span class="status">Taking new projects</span>
+      <div class="facts">
+        <div><span>Hours</span><span>9 AM to 5 PM EST</span></div>
+        <div><span>Based in</span><span>Islamabad, Pakistan</span></div>
+        <div><span>Works through</span><span>Upwork or direct</span></div>
+        <div><span>Platforms</span><span>GoHighLevel, Retell, Vapi, HubSpot, Salesforce and 50+ more</span></div>
+      </div>
+      <a class="btn line" href="https://wa.me/923311467259" target="_blank" rel="noopener">Message on WhatsApp</a>
+    </aside>
+  </div>
+</section>
+
+<section class="band" aria-label="Track record">
+  <div class="in">
+    <div class="kpis">
+      <div class="kpi"><span class="v">6+</span><span class="l">years building in GoHighLevel</span></div>
+      <div class="kpi"><span class="v">165+</span><span class="l">businesses served</span></div>
+      <div class="kpi"><span class="v">147</span><span class="l">implementations led as team lead</span></div>
+      <div class="kpi"><span class="v">55+</span><span class="l">AI agent builds launched</span></div>
+      <div class="kpi"><span class="v">50+</span><span class="l">CRMs and platforms integrated</span></div>
+      <div class="kpi"><span class="v">18.6k</span><span class="l">contacts in one migration, none lost</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="problems">
+  <div class="in">
+    <div class="head">
+      <p class="kicker">What I fix</p>
+      <h2>Sound familiar?</h2>
+      <p>These are the problems clients bring me most. Each one links to a real project where I solved it.</p>
+    </div>
+    <div class="probs">
+      <article class="prob"><span class="pain">"Leads go cold before anyone calls them."</span><h3>AI agents that call in minutes and book on your live calendar</h3><p>Outbound, inbound, confirmation and no show recovery agents on Retell, Vapi or GoHighLevel.</p><p class="proof"><b>Result:</b> missed appointments get a recovery call within 5 minutes.</p><button class="link-btn" type="button" data-open="noshow">See the case study &rarr;</button></article>
+      <article class="prob"><span class="pain">"Our CRM contract ends and we can't lose anything."</span><h3>Migrations into GoHighLevel with every record accounted for</h3><p>Contacts, companies, deals, products, emails and calendars, checked against a backup.</p><p class="proof"><b>Result:</b> 18,657 contacts moved from HubSpot before the cutoff.</p><button class="link-btn" type="button" data-open="hubspot">See the case study &rarr;</button></article>
+      <article class="prob"><span class="pain">"Our other software doesn't talk to GoHighLevel."</span><h3>Direct integrations that keep data current on their own</h3><p>Two way or one way syncs through APIs and webhooks, with duplicate and rate limit handling.</p><p class="proof"><b>Result:</b> 5,054 gym members synced for $5 a month instead of $1,000+ on Zapier.</p><button class="link-btn" type="button" data-open="gym">See the case study &rarr;</button></article>
+      <article class="prob"><span class="pain">"Leads land with the wrong person, or nobody."</span><h3>Routing that sends every lead to the right team</h3><p>Geo, round robin or rules based routing across one account or dozens of sub accounts, with fallbacks.</p><p class="proof"><b>Result:</b> 22 sub accounts, nearest dealer within 300 miles, no lead left unworked.</p><button class="link-btn" type="button" data-open="geo">See the case study &rarr;</button></article>
+      <article class="prob"><span class="pain">"Clients keep emailing us for updates."</span><h3>Client portals inside GoHighLevel</h3><p>Ticket boards, replies and file uploads your clients see in their own portal login.</p><p class="proof"><b>Result:</b> requests, replies and files in one board, launched for every client.</p><button class="link-btn" type="button" data-open="portal">See the case study &rarr;</button></article>
+      <article class="prob"><span class="pain">"Our delivery team is stretched thin."</span><h3>A fulfillment lead who runs implementation for you</h3><p>Discovery docs, launch calls, QA before go live, change routing and SOPs.</p><p class="proof"><b>Result:</b> about 40% faster sales to live for a GoHighLevel agency.</p><button class="link-btn" type="button" data-open="agencyops">See the case study &rarr;</button></article>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="work">
+  <div class="in">
+    <div class="head">
+      <p class="kicker">Results</p>
+      <h2>Client work, with the numbers</h2>
+      <p>Select any project to see what was needed, how the system works, and the results. Client names are kept private.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="works" id="works"></div>
+    <div class="more-row"><button class="btn line" type="button" id="more">Show all projects</button></div>
+  </div>
+</section>
+
+<section class="block band" id="services">
+  <div class="in">
+    <div class="head">
+      <p class="kicker">Services</p>
+      <h2>What I can build for you</h2>
+      <p>Pick the closest match and I'll scope it after a short look at your account.</p>
+    </div>
+    <div class="svc">
+      <article><h3>AI voice and text agents</h3><p>Receptionists, outbound callers, confirmations and no show recovery.</p><ul><li>Prompt, voice and tool setup</li><li>Live booking and warm transfers</li><li>Outcomes written back to your CRM</li><li>Call analysis after launch</li></ul><button class="link-btn go" type="button" data-pick="AI voice and text agents">Ask about this &rarr;</button></article>
+      <article><h3>CRM migrations</h3><p>HubSpot, Salesforce or another agency into GoHighLevel.</p><ul><li>Field mapping document</li><li>Contacts, deals, products, calendars</li><li>Email templates and media</li><li>Reconciliation report after cutover</li></ul><button class="link-btn go" type="button" data-pick="CRM migration">Ask about this &rarr;</button></article>
+      <article><h3>Integrations and syncs</h3><p>GoHighLevel connected to the tools you already use.</p><ul><li>One way or two way syncs</li><li>Signed webhooks</li><li>Zapier, Make or n8n when it fits</li><li>Duplicate and rate limit handling</li></ul><button class="link-btn go" type="button" data-pick="Integration or sync">Ask about this &rarr;</button></article>
+      <article><h3>Workflows and lead routing</h3><p>Automations that follow a lead from first form to closed deal.</p><ul><li>Pipelines, tags and custom fields</li><li>Multi sub account routing</li><li>Long cycle nurture sequences</li><li>A2P and caller ID setup</li></ul><button class="link-btn go" type="button" data-pick="Workflows and lead routing">Ask about this &rarr;</button></article>
+      <article><h3>Client portals and custom apps</h3><p>For when GoHighLevel can't do it natively.</p><ul><li>Ticket and request portals</li><li>Marketplace apps with usage billing</li><li>Course and loyalty portals</li><li>Low running cost on Cloudflare</li></ul><button class="link-btn go" type="button" data-pick="Client portal or custom app">Ask about this &rarr;</button></article>
+      <article><h3>Fulfillment leadership</h3><p>Run implementation for your clients, or fix how delivery works.</p><ul><li>Discovery docs and launch calls</li><li>QA before go live</li><li>SOPs and team onboarding</li><li>Change request routing</li></ul><button class="link-btn go" type="button" data-pick="Fulfillment leadership">Ask about this &rarr;</button></article>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="platforms">
+  <div class="in">
+    <div class="head">
+      <p class="kicker">Platforms</p>
+      <h2>Already on another tool? I've likely connected it.</h2>
+      <p>Select a platform to see the projects that used it.</p>
+    </div>
+    <div class="plat-groups" id="plat-groups"></div>
+    <div class="usage" id="usage" hidden aria-live="polite">
+      <h3 id="usage-title" style="font-size:17px"></h3>
+      <p class="muted" id="usage-note" style="font-size:15px"></p>
+      <div class="links" id="usage-links"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="process">
+  <div class="in two">
+    <div>
+      <div class="head" style="margin-bottom:20px">
+        <p class="kicker">How I work</p>
+        <h2>Clear steps, no surprises</h2>
+      </div>
+      <ol class="steps">
+        <li><div><b>Audit</b><span>I look at your real account and access before quoting, and flag anything I can't verify.</span></div></li>
+        <li><div><b>Written scope</b><span>Agents, workflows, integrations and timeline agreed in a discovery doc.</span></div></li>
+        <li><div><b>Build and dry run</b><span>Migrations and syncs run read only first, so issues show up before your data changes.</span></div></li>
+        <li><div><b>Launch call</b><span>I walk your team through everything live, then tune from real results.</span></div></li>
+        <li><div><b>Handover</b><span>Prompts, field maps and specs delivered, so your team owns the system.</span></div></li>
+      </ol>
+    </div>
+    <div class="lead-card">
+      <p class="kicker">Team leadership</p>
+      <h3>Fulfillment Team Lead at SimpleTalk AI</h3>
+      <p>Client facing lead for AI agent implementations, coordinating prompt engineers, developers and account managers.</p>
+      <div class="lstats"><div><b>147</b><span>accounts owned</span></div><div><b>41</b><span>launches handed off</span></div><div><b>14</b><span>teammates coordinated</span></div></div>
+      <ul><li>Ran the daily pilot, launch and support call schedule</li><li>QA'd every build against its discovery doc</li><li>Built the onboarding library that gets new hires productive in 1 to 2 weeks</li></ul>
+      <div class="jobs">
+        <div><span>2026 to now</span><span>Automation and AI Engineer, GHL Success Path</span></div>
+        <div><span>Mar to Dec 2025</span><span>Fulfillment Team Lead, SimpleTalk AI</span></div>
+        <div><span>Ongoing</span><span>AI Voice Automation and GoHighLevel Specialist, Upwork</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="apps">
+  <div class="in">
+    <div class="head">
+      <p class="kicker">Products</p>
+      <h2>Apps I've built for agencies</h2>
+    </div>
+    <div class="prods">
+      <article class="prod"><span class="kind">Marketplace app</span><h3>CallBridge</h3><p>Retell and Vapi calls from GoHighLevel workflows, billed per use through the GoHighLevel wallet.</p><button class="link-btn" type="button" data-open="callbridge">How it works &rarr;</button></article>
+      <article class="prod"><span class="kind">Marketplace app</span><h3>TicketPort</h3><p>White label support desk for agencies. Installs through OAuth, no API tokens to hand over.</p><button class="link-btn" type="button" data-pick="Client portal or custom app">Ask about this &rarr;</button></article>
+      <article class="prod"><span class="kind">Recovered app</span><h3>SuccessDash AI</h3><p>Reporting dashboard rebuilt from its live deployment after the source was lost, then fixed without downtime.</p><button class="link-btn" type="button" data-open="recover">How it works &rarr;</button></article>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="faq">
+  <div class="in">
+    <div class="head">
+      <p class="kicker">FAQ</p>
+      <h2>Questions clients usually ask</h2>
+    </div>
+    <div class="faq">
+      <details><summary>How do you price a project?</summary><p>Most work is project based: a defined scope, timeline and price agreed upfront after I audit your account. Ongoing support or a monthly arrangement is available when it makes more sense.</p></details>
+      <details><summary>Do I need a GoHighLevel account already?</summary><p>No. I can set up GoHighLevel from scratch, move you in from another CRM, or improve an account you already run.</p></details>
+      <details><summary>Which AI calling platform should I use?</summary><p>It depends on your call volume, budget and how much control you need. I build on Retell, Vapi and GoHighLevel Voice AI, and recommend one after looking at your use case.</p></details>
+      <details><summary>Can you work white label for my agency's clients?</summary><p>Yes. I've run fulfillment for agencies and built delivery plans that partners resell under their own name.</p></details>
+      <details><summary>What hours do you work?</summary><p>9 AM to 5 PM Eastern, Monday to Friday, with updates on Slack, WhatsApp or email.</p></details>
+      <details><summary>Who owns the work when it's done?</summary><p>You do. Prompts, field maps, scripts and documentation are handed over so your team can run and change the system without me.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="contact band" id="contact">
+  <div class="in">
+    <div>
+      <p class="kicker">Start a project</p>
+      <h2>Tell me what you need. I'll come back with a plan.</h2>
+      <p class="lead">Use the form to write your first message, or reach me directly.</p>
+      <div class="reach">
+        <div class="row"><span class="label">WhatsApp</span><span class="val" id="v-wa">+92 331 1467259</span><span class="acts"><a class="mini" href="https://wa.me/923311467259" target="_blank" rel="noopener">Open chat</a><button class="mini" type="button" data-copy="v-wa">Copy</button></span></div>
+        <div class="row"><span class="label">Email</span><span class="val" id="v-email">abdullahnazir6699@gmail.com</span><span class="acts"><a class="mini" href="mailto:abdullahnazir6699@gmail.com">Email</a><button class="mini" type="button" data-copy="v-email">Copy</button></span></div>
+        <div class="row"><span class="label">Upwork</span><span class="val">Abdullah N.</span><span class="acts"><a class="mini" href="https://www.upwork.com/freelancers/abdullahnazirhussain" target="_blank" rel="noopener">View profile</a></span></div>
+      </div>
+    </div>
+    <form class="brief" id="brief" novalidate>
+      <h3>Project brief</h3>
+      <div class="field"><span class="label">What do you need?</span><div class="opts" id="opts" role="group" aria-label="Project type"></div></div>
+      <div class="field"><label for="b-text">Describe the project</label><textarea id="b-text" placeholder="Example: We have 3 locations on GoHighLevel and want an AI agent to call new leads within 5 minutes and book on our calendar."></textarea></div>
+      <div class="row2">
+        <div class="field"><label for="b-name">Your name</label><input id="b-name" autocomplete="name"></div>
+        <div class="field"><label for="b-co">Company</label><input id="b-co" autocomplete="organization"></div>
+      </div>
+      <div class="sendrow">
+        <button class="btn" type="button" id="send-wa">Send on WhatsApp</button>
+        <button class="btn line" type="button" id="copy-brief">Copy for email</button>
+      </div>
+      <p class="msg" id="brief-msg" aria-live="polite">Your message opens in WhatsApp, ready to send. Nothing is sent from this page.</p>
+    </form>
+  </div>
+</section>
+<footer class="band"><div class="in fine">Figures come from delivered project records and SimpleTalk implementation work, March 2025 to November 2026. Client names are withheld.</div></footer>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="v-title">
+  <div class="sheet">
+    <div class="sheet-top">
+      <span class="count" id="v-count"></span>
+      <button class="icon-btn" type="button" id="v-prev" aria-label="Previous project">&larr; Prev</button>
+      <button class="icon-btn" type="button" id="v-next" aria-label="Next project">Next &rarr;</button>
+      <button class="icon-btn" type="button" id="v-close" aria-label="Close">Close &times;</button>
+    </div>
+    <div class="sheet-body" id="v-body"></div>
+    <div class="sheet-cta">
+      <p>Need something like this?</p>
+      <button class="btn" type="button" id="v-cta">Ask about a similar build</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PLATFORMS = {
+  "Sales CRMs": ["GoHighLevel","HubSpot","Salesforce","Zoho","Microsoft Dynamics 365","Pipedrive","Keap","Close","Copper","Insightly","Salesmate","monday CRM","Odoo","Podio"],
+  "Real estate CRMs": ["Follow Up Boss","Lofty","kvCORE","BoldTrail","Sierra Interactive","CINC","LeadSimple","Yardi"],
+  "Industry systems": ["ServiceTitan","JobNimbus","AccuLynx","Housecall Pro","Jobber","Workiz","ImproveIt 360","Buildertrend","SmartMoving","DealerSocket","Elead","CDK","Clio","Lawmatics","GymMaster","Practice Better","Vagaro","Zenoti"],
+  "Voice and messaging": ["Retell","Vapi","Twilio","RingCentral","Dialpad","CallRail","Podium","Calendly","Cal.com"],
+  "Automation and forms": ["Zapier","Make","n8n","JotForm","Typeform","Cloudflare Workers"],
+  "Ops, web and billing": ["ClickUp","Asana","Trainual","Zendesk","Google Sheets","Shopify","WordPress","Wix","Squarespace","Klaviyo","Stripe","QuickBooks","Clay"]
+};
+
+const CASES = [
+  { id:"hubspot", cat:"Migrations", src:"GHL Success Path", ind:"Creative agency", title:"HubSpot to GoHighLevel migration with a custom support portal",
+    nums:[["18,657","contacts migrated"],["10,743","companies"],["1,205","deals"],["4,115","historical tickets"],["0","records lost"]],
+    need:"The agency's HubSpot contract ended on a fixed date. Everything had to move: CRM records, subscription billing, 48 automated emails, booking calendars and a support desk. Their clients also needed a place to see support tickets, which GoHighLevel can't show natively.",
+    sol:["Mapped 91 HubSpot properties to GoHighLevel custom fields and imported the full CRM through the API, with company links and deals intact.","Rebuilt 81 products with recurring prices, 12 payment links and all active subscribers tagged by plan.","Migrated 54 email templates with their images, and rebuilt 12 round robin calendars from past meeting data.","Trained a support chat agent on 12 FAQs and 927 help articles.","Built a client portal on Cloudflare Workers that shows each client their tickets, with verified sessions, ticket submission and file upload."],
+    res:["Every record moved before the HubSpot cutoff, verified against a full backup.","Portal ticket flow passed end to end on the live portal, then moved to the agency's own hosting account.","Historical KPIs started with 4,115 real tickets instead of an empty board."],
+    stack:["HubSpot","GoHighLevel","Stripe","QuickBooks","Cloudflare Workers"] },
+  { id:"vapi-re", cat:"Voice AI", src:"Upwork", ind:"Real estate", title:"Vapi AI calling agent with a GoHighLevel nurture system",
+    nums:[["2","custom booking tools"],["6 mo","cold calling sequence"],["2.5 yr","nurture drip"],["0","Make or Zapier steps"]],
+    flow:[["GHL workflow","Triggers the call through an outbound webhook"],["Vapi agent","Runs the call and invokes the booking tools"],["GHL custom fields","Transcript, outcome, sentiment and call details"],["Outcome automation","Recall, requeue, nurture or advance the pipeline"]],
+    need:"A real estate client wanted AI cold calling tied directly into GoHighLevel. Native GoHighLevel booking wasn't available to the agent, and the long real estate sales cycle meant leads had to be followed for years, not weeks.",
+    sol:["Connected Vapi to GoHighLevel through direct API calls: a GoHighLevel workflow fires a webhook to launch each call.","Built two custom Vapi tools: one looks up open availability before any time is offered, the other upserts the contact and books the event in the right department through the GoHighLevel API.","Call results flow back through an inbound webhook into custom fields for transcript, outcome, sentiment and call details.","For every call, an automation logs the outcome to conversation history, updates notes with sentiment and a summary, tags the contact and tracks the result on the pipeline.","Each outcome branches into recall, requeue, nurture or a pipeline stage change, feeding a 6 month calling sequence and a 2.5 year nurture drip."],
+    res:["Every call outcome is captured on the contact, so no lead goes cold between touches.","Bookings land on live availability with no third party automation tools in the loop.","The client's team sees transcript, sentiment and next step on each contact without listening to recordings."],
+    stack:["Vapi","GoHighLevel"] },
+  { id:"geo", cat:"Integrations", src:"Upwork", ind:"Multi dealer network", title:"Geo based lead routing across 22 GoHighLevel sub accounts",
+    nums:[["22","sub accounts"],["6","web forms"],["300 mi","matching radius"],["48 hr","acceptance window"]],
+    flow:[["Lead capture","4 JotForm forms and 2 custom code forms on dealer sites"],["Main hub","Matches the postal code to the nearest qualified dealer"],["Dealer sub account","Lead dispatched to the dealer's own isolated CRM"],["Outcome sync","Won or lost results flow back to a KPI object"]],
+    need:"A dealer network needed every web lead sent to the right local dealer automatically. Each dealer had to work leads in their own private CRM, nothing could be lost if a dealer didn't respond, and head office needed to see results across the whole network.",
+    sol:["Built a hub and spoke system: one central sub account captures leads from 6 web forms, and 21 isolated dealer sub accounts act as dealer owned CRMs.","The hub matches each lead's postal code to the nearest qualified dealer within 300 miles and dispatches it automatically.","Dealers have 48 hours to accept. Unaccepted leads, and leads with no dealer in range, fall through to a default sub account.","Duplicate submissions across forms are handled as distinct events, and image and data cleanup runs on intake.","Won and lost outcomes sync back from each dealer to a KPI custom object in the hub.","Every dealer is set up from a snapshot, delivered with full documentation and an onboarding guide."],
+    res:["Every lead reaches a dealer or the fallback account, so none sit unworked.","Dealer data stays isolated with no cross dealer leakage.","Head office tracks won and lost results for the whole network in one place, and new dealers onboard with a consistent setup."],
+    stack:["GoHighLevel","JotForm"] },
+  { id:"gym", cat:"Integrations", src:"GHL Success Path", ind:"Fitness gym", title:"Membership system to GoHighLevel sync",
+    nums:[["5,054","members synced"],["332","plan changes caught"],["0","duplicates found"],["$5/mo","running cost"]],
+    need:"The gym's membership software had no GoHighLevel connector, so renewal and win back automations ran on stale data. Staff were updating plans and expiry dates by hand.",
+    sol:["Built a scheduled Cloudflare Worker that reads every member twice a day and writes status, plan and expiry date to GoHighLevel.","New members are matched to existing contacts by email or phone before anything is created.","Records whose member ID changed after a merge are repaired automatically, with a note on the contact.","Rate limit retries with backoff, after a dry run flagged the risk before go live."],
+    res:["First full pass set status on 5,054 contacts and caught 332 plan changes and 28 expiry changes.","A duplicate audit found zero duplicates.","Runs for about $5 a month, against an estimated $1,069 to $2,999 a month for the same volume on Zapier."],
+    stack:["GymMaster","GoHighLevel","Cloudflare Workers"] },
+  { id:"moving", cat:"Migrations", src:"GHL Success Path", ind:"Moving and storage company", title:"Agency to agency GoHighLevel migration without a snapshot",
+    nums:[["4,154","contacts"],["2,598","opportunities"],["1,583","appointments"],["9,019","field values reconciled"]],
+    need:"The company's old agency was shutting down. Snapshots don't work across agencies, and they needed an exact copy of their CRM in a new account before access was revoked.",
+    sol:["Wrote resumable Python export and import tools that keep a full ID map, so a rerun continues instead of duplicating.","Moved pipelines, custom fields, tags, products, templates, trigger links and conversation history.","Rebuilt the 26 published workflows and five calendars, then imported appointments.","Sent the website's quote form straight into their moving software's lead API."],
+    res:["2,598 of 2,599 opportunities imported, with the last one traced and explained.","A reconciliation pass caught records edited after the first export and brought all 9,019 opportunity field values up to date.","Found and fixed an address field mismatch in the API, backfilling 160 street addresses."],
+    stack:["GoHighLevel","SmartMoving"] },
+  { id:"law", cat:"Voice AI", src:"GHL Success Path", ind:"Immigration law firm", title:"Eleven agent AI front desk on Retell",
+    nums:[["5","voice agents"],["6","chat agents"],["5","channels covered"],["3","transfer routes"]],
+    need:"The firm's AI receptionist ran on GoHighLevel's built in agents and couldn't cover all of their channels. They wanted better voice quality on Retell without disturbing their existing inbound phone setup.",
+    sol:["Built 5 voice agents and 6 chat agents for SMS, website, WhatsApp, Instagram and Facebook from one versioned setup script.","Agents book directly on GoHighLevel calendars through the API: one tool reads open slots, others create the contact and the appointment.","Warm transfers to finance, the case team and a named attorney.","Outbound calls run through a Twilio SIP trunk while inbound stays on GoHighLevel."],
+    res:["Outbound went live on the new trunk with zero change to inbound routing.","Every prompt and agent setting lives in one script, so changes are repeatable and reversible."],
+    stack:["Retell","Twilio","GoHighLevel"] },
+  { id:"clinic", cat:"Voice AI", src:"SimpleTalk", ind:"Health clinic", title:"Outbound campaign analysis that found where leads were lost",
+    nums:[["5,410","calls placed"],["538","answered"],["89","mid call actions"],["64","hot leads"]],
+    need:"The clinic was running a large outbound campaign and wanted to know why answered calls weren't turning into bookings.",
+    sol:["Broke 18 days of calls down by duration: under 20 seconds, 20 to 50, and over 50.","Reviewed transcripts and found the agent sent a link and ended the call whenever a lead raised cost or doubt.","Rewrote the objection handling so the agent addresses the concern before offering the link."],
+    res:["Produced 64 hot leads and 89 mid call actions from 538 answered calls.","Gave the clinic a clear, evidence based list of prompt changes instead of guesswork."],
+    stack:["GoHighLevel","Twilio"] },
+  { id:"realestate", cat:"Voice AI", src:"SimpleTalk", ind:"Real estate investor", title:"Calling workflow fail safes for multi number contacts",
+    nums:[["3","calls per number max"],["0","uncapped contacts after fix"]],
+    need:"Contacts with several phone numbers were being called without a cap, because two workflows didn't track how many times each number had been dialed.",
+    sol:["Added a call counter per contact and a hard limit of three calls per number.","The workflow switches to the next number on file, then sends SMS and email after the third attempt.","Contacts with no numbers left are closed out automatically so the automation never contacts them again."],
+    res:["Over calling stopped and every contact now follows a predictable, capped sequence."],
+    stack:["GoHighLevel"] },
+  { id:"salesforce", cat:"Integrations", src:"SimpleTalk", ind:"Industrial manufacturers", title:"Salesforce to GoHighLevel sync for AI calling",
+    nums:[["2","manufacturers"],["2","integration paths"]],
+    need:"Two manufacturers kept their leads in Salesforce but needed them enrolled in AI calling workflows in GoHighLevel.",
+    sol:["Set up a Salesforce field as the trigger: when it changes, name, phone and email are pushed to GoHighLevel and the contact enters the right calling workflow.","No code path through Zapier for the first client.","Wrote the native path for the second: an Apex trigger with Named Credentials posting directly to GoHighLevel."],
+    res:["Leads flowed from Salesforce into calling workflows without manual exports.","The contact fields each client chose are available to the agent during calls."],
+    stack:["Salesforce","Zapier","GoHighLevel"] },
+  { id:"clinical", cat:"Integrations", src:"SimpleTalk", ind:"Clinical research company", title:"Compliant setup and caller ID for patient outreach",
+    nums:[["15","character caller ID"],["1","inbound line connected"]],
+    need:"The company handles patient data and its outbound calls were being flagged as spam likely.",
+    sol:["Planned the move to HIPAA compliant GoHighLevel.","Registered a branded caller ID that matches the business name, within carrier rules.","Connected call forwarding from their office phone system into the inbound agent."],
+    res:["Outbound calls display the company name instead of an unknown number.","Inbound calls reach the agent without changing the phone provider."],
+    stack:["GoHighLevel","Twilio"] },
+  { id:"portal", cat:"Portals", src:"GHL Success Path", ind:"Marketing agency", title:"ClickUp backed client portal inside GoHighLevel",
+    nums:[["4","client facing statuses"],["15 s","refresh cache"]],
+    need:"The agency tracked client requests in ClickUp, so their clients had no way to see progress or reply without email chains.",
+    sol:["Built a portal inside the GoHighLevel client portal that reads tickets live from ClickUp.","Clients see requests on a board, reply in a thread and upload files.","Only team comments marked for the client become visible; internal notes and bots stay hidden.","Signed webhooks and signed file links, with tampered links refused."],
+    res:["Reply and file upload tests passed end to end on a real ticket.","Launched for all of the agency's clients after testing."],
+    stack:["ClickUp","GoHighLevel","Cloudflare Workers"] },
+  { id:"noshow", cat:"Voice AI", src:"GHL Success Path", ind:"Coaching business", title:"No show recovery and confirmation voice agents",
+    nums:[["5 min","to first recovery call"],["2","max attempts"]],
+    need:"Prospects were missing their sales calls and the team had no fast way to recover them.",
+    sol:["A confirmation agent calls ahead of each appointment.","A recovery agent calls within five minutes of a missed appointment and offers to join now or rebook on live availability.","Checks GoHighLevel DND before every call and caps attempts at two per appointment.","Writes the outcome, transcript and recording link back to the contact."],
+    res:["Every missed appointment gets a recovery call while the prospect is still available.","Compliance rules the client asked for are enforced in the workflow, not left to the prompt."],
+    stack:["Retell","Twilio","GoHighLevel"] },
+  { id:"agencyops", cat:"Integrations", src:"Upwork", ind:"GoHighLevel agency", title:"Agency operations rebuild",
+    nums:[["54","Asana fields"],["8","left manual"],["~40%","faster sales to live"]],
+    need:"The agency was using GoHighLevel as a project tracker. Handoffs between sales, success and implementation were unclear and onboarding took too long.",
+    sol:["Mapped the full client journey and split CSM and implementation responsibilities.","Built a 54 field Asana setup where only 8 fields stay manual.","Replaced Zapier with a direct Stripe to GoHighLevel integration and added two way Asana and GoHighLevel sync.","Wrote stage by stage SOPs with edge cases and a pre kickoff requirements doc."],
+    res:["Sales to live time dropped by about 40%.","New clients start with a complete requirements doc instead of discovery by email."],
+    stack:["Asana","Stripe","Zapier","GoHighLevel"] },
+  { id:"dealer", cat:"Voice AI", src:"Upwork", ind:"Mobile home dealer", title:"AI outreach with booking funnels",
+    nums:[["3","parts: agents, sequences, funnels"]],
+    need:"The dealer needed leads called and followed up quickly, and a simple way for interested buyers to book.",
+    sol:["AI voice agents for first contact and follow up.","Outreach sequences timed to match each lead's stage.","Landing pages with booking funnels feeding the calendar."],
+    res:["Leads move from first call to a booked visit without manual chasing."],
+    stack:["GoHighLevel"] },
+  { id:"recover", cat:"Portals", src:"GHL Success Path", ind:"SaaS dashboard app", title:"Recovering and fixing a live app with no source code",
+    nums:[["6","pages rebuilt"],["3","bugs fixed"],["1","duplicate process found"],["0","downtime"]],
+    need:"A GoHighLevel reporting app was live with paying users, but its source code had been lost. Sync jobs were failing for some sub accounts and the settings page was broken.",
+    sol:["Rebuilt the full project from the deployed source map and downloaded assets, then compared every file against the live version before changing anything.","Found an older copy of the same app running its own schedule against the same database with old code, which was undoing fixes.","Fixed token handling so one failing sub account no longer stops the others, kept time zones from resetting, and capped notes per run.","Deployed with a recorded rollback version and a check script that runs before every release."],
+    res:["Sync runs per sub account in isolation, so one bad token no longer breaks the batch.","The duplicate scheduler was switched off with the client's approval, and fixes stopped being overwritten.","The app now has source control, a rollback point and a predeploy check."],
+    stack:["GoHighLevel","Cloudflare Workers"] },
+  { id:"callbridge", cat:"Portals", src:"GHL Success Path", ind:"GoHighLevel agencies", title:"CallBridge: per use Retell and Vapi calling inside GoHighLevel",
+    nums:[["$0.01","relay charge"],["$0.02","outcome charge"],["15","scopes requested"],["30","agencies targeted"]],
+    need:"Agencies wanted to run Retell and Vapi calls from GoHighLevel workflows and resell them, but GoHighLevel's own custom code can't make outbound requests, and there was no simple way to bill clients per call.",
+    sol:["Built a GoHighLevel marketplace app on Cloudflare Workers and D1 that relays calls to Retell or Vapi and writes outcomes back to the contact.","Billing runs through GoHighLevel wallet meters, with an admin page for usage per agency and custom prices per agency or sub account.","Texting bot rules with per lead daily and total send limits.","Uninstall deletes the account's data automatically, and customer facing text was reviewed for marketplace compliance."],
+    res:["Per use charges returned successfully from GoHighLevel's billing API on the first real call.","Uninstall cleanup verified on a second account without touching others.","Bundle cut from 1.26 MB to 186 KB after removing unused actions."],
+    stack:["Retell","Vapi","GoHighLevel","Cloudflare Workers"] },
+  { id:"crerealestate", cat:"Voice AI", src:"GHL Success Path", ind:"Commercial real estate", title:"Outbound agents for multifamily property owners",
+    nums:[["2","agent voices"],["2","warm transfer partners"],["3 to 5 min","target call length"],["7","agent tools"]],
+    need:"A commercial real estate team's earlier AI cold calling agent was never approved before their platform closed. They needed a rebuild that reflected all the feedback they'd already given.",
+    sol:["Rebuilt the agent from their approved script and written feedback, with a female and a male voice to test against each other.","Added a pronunciation rule for the brand name, a faster pace and a 3 to 5 minute call target.","Seven tools: end call, warm transfer to either partner, time zone, availability limited to weekday mornings, save contact, book appointment and do not contact.","The agent asks proactively for rent roll, T12 and capex details, and never promises a transfer it can't make."],
+    res:["Every piece of feedback the client gave on the old system is built into the new agents.","Both voices run from one setup script, so the client can compare them and switch without a rebuild."],
+    stack:["Retell","GoHighLevel"] },
+  { id:"dealership", cat:"Voice AI", src:"GHL Success Path", ind:"Auto dealership events", title:"Sales event calling agent for a dealership",
+    nums:[["3 to 4","day sales events"],["1","callback goal per interested lead"]],
+    need:"An events company runs short dealership sales events and needed an agent that turns interest into human callbacks fast, without the issues they'd had before.",
+    sol:["Agent pushes for a human callback on any sign of interest and accepts whatever time the customer picks, including Saturdays.","Tuned so background noise doesn't cut the agent off and a casual \"yeah\" isn't heard as \"nah\".","A young, upbeat voice per the client's brief, with team alerts on every appointment and callback.","Booking tools write directly to the dealership's GoHighLevel calendar."],
+    res:["Every issue the client raised on the old setup has a matching fix in the new agent.","Ready to switch on per event by adding the dealership's calendar and number."],
+    stack:["Retell","GoHighLevel"] },
+  { id:"recall", cat:"Voice AI", src:"SimpleTalk", ind:"Sales coaching", title:"Outcome based recall and follow up flows",
+    nums:[["4","call outcomes routed"],["2","follow up tracks"]],
+    need:"The client's leads were all getting the same follow up whatever happened on the call, and the AI texting agent wasn't starting after the first SMS.",
+    sol:["Routed each outcome (no answer, voicemail, answered, did not connect) to its own recall path, while booked and do not call leads exit.","Split cold call follow up: two callbacks over three days, then a weekly sequence.","Fixed the hand off so the AI texting agent starts the conversation after the static SMS.","Documented exactly what triggers each recall so the client's team could audit it."],
+    res:["Each lead gets follow up that matches what happened on the call.","The client could answer their own questions about the automation from the written logic."],
+    stack:["GoHighLevel"] },
+  { id:"franchise", cat:"Voice AI", src:"SimpleTalk", ind:"Restoration franchise", title:"Separate inbound agents per business line",
+    nums:[["2","business lines"],["4","recall follow ups"]],
+    need:"A restoration franchisor handles both franchise sales and national accounts, and callers for each need different answers and a different person.",
+    sol:["Built an inbound agent per line, each on its own number with its own call transfer.","Updated the recall sequence to four follow up calls.","Gave the client's team CRM access to monitor calls and outcomes."],
+    res:["Callers reach the right agent and the right person for their line from the first ring."],
+    stack:["GoHighLevel"] },
+  { id:"hubspotqa", cat:"Integrations", src:"SimpleTalk", ind:"Logistics", title:"HubSpot integration with QA against the discovery doc",
+    nums:[["1","inbound agent"],["1","outbound agent"],["100%","discovery items reported"]],
+    need:"A logistics company needed inbound and outbound agents connected to HubSpot, and webhook steps in their HubSpot workflows had stopped working.",
+    sol:["Delivered both agents with call transfer and the HubSpot connection.","QA'd every item against the discovery doc and reported status line by line, including extra work done outside scope.","Traced the webhook failure to a HubSpot plan change that removed webhook access, confirmed it with super admin access, and routed the client to HubSpot to restore it."],
+    res:["The client got a clear, item by item status instead of a vague delay.","The root cause was identified as a plan limit, not a build fault, so no time was wasted rebuilding."],
+    stack:["HubSpot","GoHighLevel"] },
+  { id:"chiro", cat:"Portals", src:"GHL Success Path", ind:"Chiropractic coaching", title:"Funnels, course portal and patient loyalty portal",
+    nums:[["4","funnel pages"],["1","course portal"],["1","loyalty add on"]],
+    need:"A chiropractic coaching brand needed to sell a method to practice owners, deliver the course inside GoHighLevel, and give clinics a patient rewards program.",
+    sol:["Built sales funnels with order, upsell and thank you pages, plus Facebook ad scripts cut from the founder's video.","Course portal inside the GoHighLevel client portal that saves each buyer's work against their contact, with a private progress page for the owner.","Loyalty portal that provisions itself when a clinic buys through SaaS checkout, with only one manual step per clinic."],
+    res:["Buyers sign in once and land straight in the course, with their progress saved across devices.","New clinics get a working rewards page without a setup call."],
+    stack:["GoHighLevel","Cloudflare Workers","Stripe"] },
+  { id:"daycare", cat:"Voice AI", src:"GHL Success Path", ind:"Childcare operator", title:"Voice agent blueprint for daycare operations",
+    nums:[["18","campaigns covered"],["8","outbound agents"],["2","multilingual inbound agents"]],
+    need:"A reseller partner needed a delivery plan and price list for automating daycare enrollment, reminders, waitlists and family support.",
+    sol:["Grouped 18 campaign ideas into 8 outbound agents, merging confirmation and reminder calls instead of padding the agent count.","Two inbound agents for admissions and family support, using built in multilingual support instead of a separate language agent.","Priced every line by scope, explained why inbound costs more than outbound, and set integration pricing by audit rather than by tier."],
+    res:["The partner got a clear per service price list they can resell without hidden margins.","Every campaign in the original plan is covered with fewer agents to build and maintain."],
+    stack:["Retell","GoHighLevel"] }
+];
+
+/* Architecture diagrams: inputs -> core system -> outputs, optional feedback loop, edge cases */
+const W = (i, h, o, il, ol, loop, edge, heads) => ({ i, h, o, il, ol, loop, edge, heads });
+const DIA = {
+  hubspot: W([["HubSpot portal","CRM, deals, tickets, emails"],["HubSpot file storage","Email images and PDFs"],["QuickBooks sync","Active subscribers"]],
+    ["Migration scripts",["91 field map, HubSpot to GHL","Import keeps every link","Checked against full backup"]],
+    [["GHL CRM","18,657 contacts, 1,205 deals"],["GHL payments","81 products, 12 pay links"],["Email and calendars","54 templates, 12 calendars"],["Client support portal","Tickets, replies, uploads"]],
+    "export","import","portal tickets sync every 10 min",
+    ["Hard HubSpot cutoff date, nothing left behind","Field name clashes mapped to standard fields","Historical tickets seeded so KPIs start full","Forged portal sessions refused"]),
+  "vapi-re": W([["GHL workflow","Triggers each call"]],
+    ["Vapi agent",["Runs the AI call","Invokes custom booking tools"]],
+    [["Tool 1: availability","Reads open slots first"],["Tool 2: upsert and book","Contact plus calendar event"],["GHL custom fields","Transcript, outcome, sentiment"]],
+    "webhook","tools","outcome routes recall, nurture or pipeline",
+    ["Native booking unavailable, custom tools built","No Make or Zapier in the loop","6 month calling, then 2.5 year nurture","Every outcome logged to conversation history"]),
+  geo: W([["4 JotForm forms","Web intake forms"],["2 custom code forms","Embedded on dealer sites"]],
+    ["Main hub sub account",["Postal code to nearest dealer","300 mile radius","Dealer selector dispatch"]],
+    [["Dealers 1 to 21","48 hr to accept the lead"],["Default dealer","No match or 48 hr timeout","warn"]],
+    "webhook","dispatch","won and lost outcomes sync to KPI object",
+    ["48 hour timeout falls through automatically","No dealer in range goes to default account","Duplicate submissions handled as distinct events","No cross dealer data leakage"]),
+  gym: W([["Membership system","Members and plans API"]],
+    ["Sync worker",["Runs every 12 hours","Match by ID, email or phone","Retry with backoff on limits"]],
+    [["GHL contact fields","Status, plan, expiry date"],["Contact notes","Only on real changes"],["New contacts","Members missing from GHL"]],
+    "read only","GHL API",null,
+    ["One way: nothing written back to the gym system","Merged member IDs repointed automatically","Duplicate check fails safe on errors","Open ended plans left unchanged"]),
+  moving: W([["Old agency account","Closing, no snapshot"]],
+    ["Export and import tools",["Python, resumable","Full old to new ID map","Reconciliation pass"]],
+    [["Pipelines and fields","Tags, products, templates"],["Contacts and deals","4,154 contacts, 2,598 deals"],["Calendars","5 calendars, 1,583 bookings"],["Workflows","26 published, rebuilt"]],
+    "export","import","late edits re-synced: 9,019 values",
+    ["Reruns resume, never duplicate","Address field mismatch fixed, 160 backfilled","Workflows held in draft until data landed","Conversations carried over as notes"]),
+  law: W([["Callers and leads","Phone, SMS, web, social"],["GHL workflow","Outbound trigger"]],
+    ["Retell agents",["5 voice, 6 chat","Built from one setup script"]],
+    [["GHL calendar","Free slots, upsert, book"],["Warm transfers","Finance, case team, attorney"],["Twilio SIP trunk","Outbound calls only"]],
+    "channels","tools",null,
+    ["Inbound kept on GHL, untouched","Each channel mapped to its own agent","Prompt hours matched to calendar hours","Prompts versioned in one script"]),
+  clinic: W([["Call logs","5,410 calls, 18 days"],["Transcripts","Answered calls"]],
+    ["Campaign analysis",["Split by call duration","Objection patterns","Hot lead count"]],
+    [["Funnel report","538 answered, 64 hot leads"],["Prompt fixes","Answer cost and doubt first"]],
+    "export","report","fixes go back into the live agent",
+    ["Under 20 seconds: 146 calls","20 to 50 seconds: 225 calls","Over 50 seconds: 169 calls","Mid call actions: 89"]),
+  realestate: W([["Contact","Up to 3 phone numbers"]],
+    ["Calling workflow",["Call counter per number","Hard limit: 3 calls"]],
+    [["Next number","Switch at the limit"],["SMS and email","After the third attempt"],["Closed out","No numbers left, stop","warn"]],
+    "enrolls","branches",null,
+    ["Root cause: two workflows never counted calls","Counter set to stop value when exhausted","Fail safe added to every branch","Tested across all three numbers"]),
+  salesforce: W([["Salesforce","Trigger field updated"]],
+    ["Integration layer",["Zapier for no code client","Apex trigger + Named Credentials"]],
+    [["GHL contact","Name, phone, email, fields"],["Calling workflow","Picked by trigger value"]],
+    "on change","upsert","call outcomes visible in the CRM",
+    ["Two clients, two integration paths","Agent reads chosen fields during calls","Upsert avoids duplicate contacts","No manual exports"]),
+  clinical: W([["Outbound calls","Flagged as spam likely"],["Office phone system","Existing inbound line"]],
+    ["GHL, HIPAA compliant",["Branded caller ID","Inbound agent"]],
+    [["Caller ID","Company name, 15 characters"],["Inbound agent","Answers forwarded calls"]],
+    "registered","forwarded",null,
+    ["Caller ID must match the business profile","No change of phone provider","Patient data kept on a compliant plan","Transfer numbers set by the client"]),
+  portal: W([["Client in GHL portal","Views, replies, uploads"]],
+    ["Portal worker",["Reads ClickUp live, 15 s cache","Session verified per request"]],
+    [["ClickUp tasks","Comments and attachments"],["GHL media","Files behind signed links"]],
+    "session","API","ClickUp webhook pushes updates back",
+    ["Only comments marked for the client are shown","Bots and internal notes stay hidden","Tampered file links refused","Raw errors never reach clients"]),
+  noshow: W([["Missed appointment","Status set to no show"]],
+    ["Recovery agent",["Calls within 5 minutes","Checks DND first","Max 2 attempts"]],
+    [["Join now","Warm transfer to sales"],["Rebook","Live slots, set confirmed"],["Contact record","Outcome, transcript, recording"]],
+    "workflow","tools",null,
+    ["DND status checked, not just a tag","Separate confirmation agent before calls","Workflows built by hand where API was blocked","Recording link saved on the contact"]),
+  agencyops: W([["Stripe payment","New client signs"],["Sales handoff","Requirements doc"]],
+    ["Asana delivery project",["54 fields, 8 manual","Stage by stage SOPs"]],
+    [["GoHighLevel","Synced both ways"],["CSM team","Owns the relationship"],["Implementation team","Owns the build"]],
+    "direct","sync",null,
+    ["Zapier removed from the billing path","Clear CSM and implementation split","Edge cases written into every SOP","About 40% faster sales to live"]),
+  dealer: W([["New lead","Web or ad form"]],
+    ["Outreach system",["AI voice agent","Cadence matched sequence"]],
+    [["Booking funnel","Landing page + calendar"],["Follow up","Calls, texts, emails"]],
+    "enrolls","routes",null,
+    ["Sequence timed to each lead's stage","Interested buyers sent to booking","Booking page feeds the calendar","No manual chasing"]),
+  recover: W([["Live app","Running, no source code"]],
+    ["Rebuilt project",["From source map and assets","Compared to live snapshot"]],
+    [["Fixed sync","Each sub account isolated"],["Old duplicate worker","Schedule switched off","warn"],["Release process","Check script + rollback"]],
+    "recovered","deployed",null,
+    ["Two workers shared one database","One bad token no longer stops the batch","Time zone no longer resets to UTC","Nothing deployed without approval"]),
+  callbridge: W([["GHL workflow action","Retell or Vapi call"]],
+    ["CallBridge worker",["Relays the call","Charges the GHL wallet"]],
+    [["Retell or Vapi","Places the call"],["GHL contact","Outcome synced back"],["Admin page","Usage and custom prices"]],
+    "action","relay","call outcome returns to the contact",
+    ["$0.01 relay, $0.02 outcome charge","Uninstall deletes the account's data","Per lead daily and total text limits","Bundle cut to 186 KB"]),
+  crerealestate: W([["GHL trigger","First name and company"]],
+    ["Retell agents",["Female and male voice","One setup script"]],
+    [["Book meeting","Weekday mornings only"],["Warm transfer","Either partner"],["Do not contact","Marks the lead"]],
+    "starts call","tools",null,
+    ["Brand name pronunciation rule","3 to 5 minute calls","Asks for rent roll, T12 and capex","Never promises a transfer"]),
+  dealership: W([["Event lead list","Dealership customers"]],
+    ["Event calling agent",["Upbeat voice","Pushes for a callback"]],
+    [["Human callback","Any time, Saturdays too"],["GHL calendar","Appointment booked"],["Team alert","Every booking and callback"]],
+    "calls","outcomes",null,
+    ["Background noise doesn't cut the agent off","\"Yeah\" no longer heard as \"nah\"","Switched on per event","Local number per dealership"]),
+  recall: W([["Call outcome","Tag added after each call"]],
+    ["Recall router",["One path per outcome","Booked and DNC exit"]],
+    [["No answer, voicemail","Callbacks over 3 days"],["Answered, no booking","Weekly follow up"],["Text AI","Starts after static SMS"]],
+    "tag added","branches",null,
+    ["Voicemail treated as no answer","Booked and do not call leads exit","Trigger logic written down for the client","Text AI hand off fixed"]),
+  franchise: W([["Franchise sales line","Prospective owners"],["National accounts line","Commercial clients"]],
+    ["Inbound agents",["One agent per number","Own prompt and transfer"]],
+    [["Franchise team","Warm transfer"],["Accounts team","Warm transfer"],["Recall sequence","4 follow up calls"]],
+    "inbound","routes",null,
+    ["Each line answered with its own script","Transfers go to the right team","Client team given CRM access","Time zone automations planned next"]),
+  hubspotqa: W([["Discovery doc","Agreed scope"]],
+    ["Build and QA",["Inbound and outbound agents","HubSpot connection"]],
+    [["Status report","Item by item"],["HubSpot webhooks","Blocked by plan","warn"],["Client action","Restore through HubSpot"]],
+    "scope","QA",null,
+    ["Extra work outside scope reported too","Plan limit, not a build fault","Confirmed with super admin access","Client routed to HubSpot sales"]),
+  chiro: W([["Ad traffic","Founder video ads"]],
+    ["Sales funnel",["Order, upsell, thank you"]],
+    [["Course portal","Progress saved per buyer"],["SaaS checkout","Clinic sub account created"],["Loyalty portal","Provisioned automatically"]],
+    "visits","purchase",null,
+    ["Buyers land straight in the course","Work saved across devices","Owner sees each buyer's progress","One manual step per new clinic"]),
+  daycare: W([["18 campaign ideas","Enrollment to waitlist"]],
+    ["Agent design",["Merge overlapping calls","Price by scope"]],
+    [["8 outbound agents","Reminders, waitlist, fill"],["2 inbound agents","Admissions, family support"],["Price list","Per service, for resale"]],
+    "grouped","delivered",null,
+    ["Confirmation and reminder merged","Multilingual instead of a language agent","Inbound vs outbound price gap explained","Integrations priced after audit"])
+};
+
+function diagram(id, d, title) {
+  const CW = 240, X = [16, 360, 704], NH = 56, G = 14, TOP = 40;
+  const hubH = 46 + d.h[1].length * 19;
+  const colH = n => n * NH + (n - 1) * G;
+  const mainH = Math.max(colH(d.i.length), colH(d.o.length), hubH);
+  const yStart = (h) => TOP + (mainH - h) / 2;
+  const iy = yStart(colH(d.i.length)), oy = yStart(colH(d.o.length)), hy = yStart(hubH);
+  const loopH = d.loop ? 64 : 0;
+  const rows = Math.ceil(d.edge.length / 2);
+  const ey = TOP + mainH + loopH + 26;
+  const eh = 46 + rows * 22;
+  const H = ey + eh + 8;
+  const hc = hy + hubH / 2;
+  let s = "";
+  const heads = d.heads || ["Inputs", "Core system", "Outputs"];
+  heads.forEach((h, k) => s += `<text class="hd" x="${X[k]}" y="24">${esc(h.toUpperCase())}</text>`);
+  const node = (x, y, t, sub, cls) => `<g class="nd ${cls || ""}"><rect x="${x}" y="${y}" width="${CW}" height="${NH}" rx="8"/><text class="t" x="${x + 14}" y="${y + 23}">${esc(t)}</text><text class="s" x="${x + 14}" y="${y + 42}">${esc(sub)}</text></g>`;
+  d.i.forEach(([t, sub], k) => {
+    const y = iy + k * (NH + G), cy = y + NH / 2;
+    s += `<path class="e" d="M${X[0] + CW} ${cy} C ${X[0] + CW + 55} ${cy}, ${X[1] - 55} ${hc}, ${X[1] - 4} ${hc}" marker-end="url(#a-${id})"/>`;
+    s += node(X[0], y, t, sub);
+  });
+  d.o.forEach(([t, sub, cls], k) => {
+    const y = oy + k * (NH + G), cy = y + NH / 2;
+    s += `<path class="e" d="M${X[1] + CW} ${hc} C ${X[1] + CW + 55} ${hc}, ${X[2] - 55} ${cy}, ${X[2] - 4} ${cy}" marker-end="url(#a-${id})"/>`;
+    s += node(X[2], y, t, sub, cls);
+  });
+  if (d.il) s += `<text class="lb" x="${(X[0] + CW + X[1]) / 2}" y="${hc - 12}" text-anchor="middle">${esc(d.il)}</text>`;
+  if (d.ol) s += `<text class="lb" x="${(X[1] + CW + X[2]) / 2}" y="${hc - 12}" text-anchor="middle">${esc(d.ol)}</text>`;
+  s += `<g class="hub"><rect x="${X[1]}" y="${hy}" width="${CW}" height="${hubH}" rx="10"/><text class="t" x="${X[1] + CW / 2}" y="${hy + 27}" text-anchor="middle">${esc(d.h[0])}</text>`;
+  d.h[1].forEach((l, k) => s += `<text class="s" x="${X[1] + CW / 2}" y="${hy + 50 + k * 19}" text-anchor="middle">${esc(l)}</text>`);
+  s += `</g>`;
+  if (d.loop) {
+    const lastY = oy + colH(d.o.length);
+    const ox = X[2] + CW / 2, hx = X[1] + CW / 2, by = TOP + mainH + 44;
+    s += `<path class="lp" d="M${ox} ${lastY} L${ox} ${by} L${hx} ${by} L${hx} ${hy + hubH + 6}" marker-end="url(#g-${id})"/>`;
+    s += `<text class="lbg" x="${(ox + hx) / 2}" y="${by - 8}" text-anchor="middle">${esc(d.loop)}</text>`;
+  }
+  s += `<rect class="eb" x="16" y="${ey}" width="928" height="${eh}" rx="10"/><text class="t" x="36" y="${ey + 28}">Edge cases handled</text>`;
+  d.edge.forEach((e, k) => s += `<text class="ei" x="${k % 2 ? 490 : 36}" y="${ey + 54 + Math.floor(k / 2) * 22}">${esc(e)}</text>`);
+  const defs = `<defs><marker id="a-${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker><marker id="g-${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ahg"/></marker></defs>`;
+  const label = `${title}: ${d.i.map(x => x[0]).join(", ")} feed ${d.h[0]}, which drives ${d.o.map(x => x[0]).join(", ")}.`;
+  return `<figure class="dia"><div class="dia-scroll"><svg viewBox="0 0 960 ${H}" role="img" aria-label="${esc(label)}">${defs}${s}</svg></div><figcaption>How it works: from ${esc(d.i.map(x => x[0]).join(" and "))}, through ${esc(d.h[0])}, to ${esc(d.o.map(x => x[0]).join(", "))}${d.loop ? `. Then ${esc(d.loop)}` : ""}.</figcaption></figure>`;
+}
+
+
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const smooth = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+const WA = "923311467259";
+const FEATURED = ["hubspot", "geo", "vapi-re", "gym", "noshow", "moving"];
+const CATS = ["All", "Voice AI", "Migrations", "Integrations", "Portals"];
+let cat = "All", showAll = false, list = [], idx = 0, lastFocus = null;
+
+/* Project cards */
+const short = c => c.res[0];
+function drawWorks() {
+  document.getElementById("filters").innerHTML = CATS.map(k => `<button type="button" class="chip" aria-pressed="${k === cat}" data-cat="${k}">${k === "Portals" ? "Portals and apps" : k} <span class="muted">${k === "All" ? CASES.length : CASES.filter(c => c.cat === k).length}</span></button>`).join("");
+  let items = CASES.filter(c => cat === "All" || c.cat === cat);
+  if (cat === "All") items = [...FEATURED.map(id => items.find(c => c.id === id)), ...items.filter(c => !FEATURED.includes(c.id))];
+  list = items;
+  const shown = (showAll || cat !== "All") ? items : items.slice(0, 6);
+  document.getElementById("works").innerHTML = shown.map(c => `<button type="button" class="work" data-open="${c.id}">
+    <span class="tags"><span class="badge gold">${esc(c.cat === "Portals" ? "Portals and apps" : c.cat)}</span><span class="badge">${esc(c.ind)}</span></span>
+    <h3>${esc(c.title)}</h3>
+    <span class="stat"><b>${esc(c.nums[0][0])}</b><span>${esc(c.nums[0][1])}</span></span>
+    <span class="out">${esc(short(c))}</span>
+    <span class="open">Read the case study &rarr;</span></button>`).join("");
+  const more = document.getElementById("more");
+  more.hidden = cat !== "All";
+  more.textContent = showAll ? "Show fewer projects" : `Show all ${CASES.length} projects`;
+}
+drawWorks();
+
+/* Case viewer */
+const viewer = document.getElementById("viewer");
+function render(c) {
+  document.getElementById("v-count").textContent = `Project ${idx + 1} of ${list.length}`;
+  document.getElementById("v-body").innerHTML = `
+    <div class="meta"><span class="badge gold">${esc(c.cat === "Portals" ? "Portals and apps" : c.cat)}</span><span class="badge">${esc(c.ind)}</span><span class="badge">Delivered via ${esc(c.src)}</span></div>
+    <h2 id="v-title">${esc(c.title)}</h2>
+    <div class="nums">${c.nums.map(([v, l]) => `<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("")}</div>
+    ${DIA[c.id] ? diagram(c.id, DIA[c.id], c.title) : ""}
+    <div class="nsr">
+      <div><h4>The problem</h4><p>${esc(c.need)}</p></div>
+      <div><h4>What I built</h4><ul>${c.sol.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>
+      <div><h4>Results</h4><ul>${c.res.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>
+    </div>
+    <div class="stack-row"><span class="label" style="margin-right:6px">Built with</span>${c.stack.map(t => `<span class="badge">${esc(t)}</span>`).join("")}</div>`;
+  viewer.scrollTop = 0;
+}
+function openCase(id) {
+  if (!list.find(c => c.id === id)) { cat = "All"; drawWorks(); }
+  idx = list.findIndex(c => c.id === id);
+  if (idx < 0) return;
+  lastFocus = document.activeElement;
+  render(list[idx]);
+  viewer.hidden = false;
+  document.body.classList.add("locked");
+  document.getElementById("v-close").focus();
+}
+function closeCase() {
+  viewer.hidden = true;
+  document.body.classList.remove("locked");
+  if (lastFocus) lastFocus.focus();
+}
+function step(n) { idx = (idx + n + list.length) % list.length; render(list[idx]); }
+document.getElementById("v-close").addEventListener("click", closeCase);
+document.getElementById("v-prev").addEventListener("click", () => step(-1));
+document.getElementById("v-next").addEventListener("click", () => step(1));
+document.getElementById("v-cta").addEventListener("click", () => {
+  const c = list[idx];
+  closeCase();
+  pick(c.cat === "Voice AI" ? "AI voice and text agents" : c.cat === "Migrations" ? "CRM migration" : c.cat === "Portals" ? "Client portal or custom app" : "Integration or sync");
+  const t = document.getElementById("b-text");
+  if (!t.value) t.value = `I saw your "${c.title}" project and need something similar. `;
+  t.focus();
+});
+viewer.addEventListener("click", e => { if (e.target === viewer) closeCase(); });
+document.addEventListener("keydown", e => {
+  if (viewer.hidden) return;
+  if (e.key === "Escape") closeCase();
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "Tab") {
+    const f = [...viewer.querySelectorAll("button, a[href]")].filter(x => x.offsetParent !== null);
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+});
+
+/* Platforms */
+const pgEl = document.getElementById("plat-groups");
+pgEl.innerHTML = Object.entries(PLATFORMS).map(([g, items]) => `<div class="pg"><span class="label">${g}</span><div class="chips">${items.map(n => `<button type="button" class="pchip" data-plat="${esc(n)}" aria-pressed="false">${esc(n)}</button>`).join("")}</div></div>`).join("");
+let picked = null;
+function pickPlatform(name) {
+  picked = picked === name ? null : name;
+  pgEl.querySelectorAll(".pchip").forEach(c => c.setAttribute("aria-pressed", c.dataset.plat === picked));
+  const box = document.getElementById("usage");
+  if (!picked) { box.hidden = true; return; }
+  const used = CASES.filter(c => c.stack.includes(picked));
+  document.getElementById("usage-title").textContent = picked;
+  document.getElementById("usage-note").textContent = used.length
+    ? `Used in ${used.length} project${used.length > 1 ? "s" : ""}. Select one to read it.`
+    : `Connected for clients during SimpleTalk implementations. Ask me how it would work with your setup.`;
+  document.getElementById("usage-links").innerHTML = used.length
+    ? used.map(c => `<button type="button" data-open="${c.id}">${esc(c.title)}</button>`).join("")
+    : `<button type="button" data-pick="Integration or sync" data-note="I use ${esc(picked)} and want it connected to GoHighLevel. ">Ask about ${esc(picked)}</button>`;
+  box.hidden = false;
+}
+
+/* Brief builder */
+const OPTS = ["AI voice and text agents", "CRM migration", "Integration or sync", "Workflows and lead routing", "Client portal or custom app", "Fulfillment leadership", "Not sure yet"];
+let chosen = new Set();
+const optsEl = document.getElementById("opts");
+function drawOpts() { optsEl.innerHTML = OPTS.map(o => `<button type="button" class="chip" aria-pressed="${chosen.has(o)}" data-opt="${esc(o)}">${esc(o)}</button>`).join(""); }
+drawOpts();
+function pick(o) {
+  chosen.add(o); drawOpts();
+  document.getElementById("brief").scrollIntoView({ behavior: smooth(), block: "start" });
+}
+function briefText() {
+  const name = document.getElementById("b-name").value.trim();
+  const co = document.getElementById("b-co").value.trim();
+  const txt = document.getElementById("b-text").value.trim();
+  const lines = [(name || co) ? `Hi Abdullah, this is ${name || "the team"}${co ? ` from ${co}` : ""}.` : "Hi Abdullah,"];
+  if (chosen.size) lines.push(`I'm interested in: ${[...chosen].join(", ")}.`);
+  if (txt) lines.push(txt);
+  lines.push("Could we talk about scope and timeline?");
+  return lines.join("\n\n");
+}
+function say(t) { document.getElementById("brief-msg").textContent = t; }
+document.getElementById("send-wa").addEventListener("click", () => {
+  if (!chosen.size && !document.getElementById("b-text").value.trim()) { say("Pick a project type or describe the project first."); document.getElementById("b-text").focus(); return; }
+  const url = `https://wa.me/${WA}?text=${encodeURIComponent(briefText())}`;
+  const a = document.createElement("a"); a.href = url; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+  say("WhatsApp opened with your message. If it didn't open, use Copy for email and send it to abdullahnazir6699@gmail.com.");
+});
+document.getElementById("copy-brief").addEventListener("click", () => {
+  const t = briefText();
+  const fallback = () => { const ta = document.getElementById("b-text"); ta.value = t; ta.select(); say("Your full message is selected in the box above. Press Ctrl+C, then email it to abdullahnazir6699@gmail.com."); };
+  try { navigator.clipboard.writeText(t).then(() => say("Copied. Paste it into an email to abdullahnazir6699@gmail.com."), fallback); } catch (err) { fallback(); }
+});
+document.getElementById("brief").addEventListener("submit", e => e.preventDefault());
+
+/* One click handler for everything else */
+document.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]");
+  if (o) { e.preventDefault(); openCase(o.dataset.open); return; }
+  const f = e.target.closest("[data-cat]");
+  if (f) { cat = f.dataset.cat; drawWorks(); return; }
+  const op = e.target.closest("[data-opt]");
+  if (op) { const v = op.dataset.opt; chosen.has(v) ? chosen.delete(v) : chosen.add(v); drawOpts(); return; }
+  const p = e.target.closest("[data-pick]");
+  if (p) { pick(p.dataset.pick); if (p.dataset.note) { const t = document.getElementById("b-text"); if (!t.value) t.value = p.dataset.note; } return; }
+  const pl = e.target.closest("[data-plat]");
+  if (pl) { pickPlatform(pl.dataset.plat); return; }
+  const cp = e.target.closest("[data-copy]");
+  if (cp) {
+    const el = document.getElementById(cp.dataset.copy);
+    const done = () => { cp.textContent = "Copied"; setTimeout(() => cp.textContent = "Copy", 1500); };
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); cp.textContent = "Press Ctrl+C"; setTimeout(() => cp.textContent = "Copy", 2500); };
+    try { navigator.clipboard.writeText(el.textContent.trim()).then(done, sel); } catch (err) { sel(); }
+    return;
+  }
+  if (e.target.closest("#more")) { showAll = !showAll; drawWorks(); return; }
+  const a = e.target.closest('a[href^="#"]');
+  if (a) {
+    const id = a.getAttribute("href").slice(1);
+    const t = id === "top" ? document.body : document.getElementById(id);
+    if (t) { e.preventDefault(); (id === "top" ? window.scrollTo({ top: 0, behavior: smooth() }) : t.scrollIntoView({ behavior: smooth(), block: "start" })); }
+  }
+});
+
+/* Highlight the nav item for the section in view */
+const navLinks = [...document.querySelectorAll("#navlinks a")];
+const secs = navLinks.map(a => document.getElementById(a.dataset.sec));
+function spy() {
+  const y = window.scrollY + 140;
+  let cur = -1;
+  secs.forEach((s, i) => { if (s.getBoundingClientRect().top + window.scrollY <= y) cur = i; });
+  if (document.getElementById("contact").getBoundingClientRect().top < innerHeight * .5) cur = -1;
+  navLinks.forEach((a, i) => a.classList.toggle("on", i === cur));
+}
+let ticking = false;
+window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { spy(); ticking = false; }); } }, { passive: true });
+spy();
+</script>
